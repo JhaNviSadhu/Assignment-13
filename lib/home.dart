@@ -1,4 +1,6 @@
-import 'package:cupertino_widgets_hw/CupertinoComponents/activity_indicator.dart';
+import 'package:cupertino_widgets_hw/CupertinoComponents/context_menu.dart';
+import 'package:cupertino_widgets_hw/CupertinoComponents/datetime_picker.dart';
+import 'package:cupertino_widgets_hw/CupertinoComponents/Tabbar/tab_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -12,13 +14,17 @@ class Home extends StatefulWidget {
 }
 
 List<String> buttonName = [
-  "Cupertino ActionSheet",
-  "Activity Indicator",
+  "ActionSheet",
+  "DateTime Picker",
+  "Context Menu",
+  "Tab Bar",
 ];
 
 List<Widget> buttonWidget = [
-  const ActionSheetDemo(),
-  const ActivityIndicatorDemo(),
+  ActionSheetDemo(title: buttonName[0]),
+  DatetimePickerDemo(title: buttonName[1]),
+  ContextMenuDemo(title: buttonName[2]),
+  TabBarClass(title: buttonName[3]),
 ];
 
 class _HomeState extends State<Home> {
@@ -41,7 +47,12 @@ class _HomeState extends State<Home> {
               padding: const EdgeInsets.only(top: 10),
               child: CupertinoButton.filled(
                 padding: const EdgeInsets.all(0),
-                child: Text(buttonName[index]),
+                child: Text(
+                  buttonName[index],
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.center,
+                ),
                 onPressed: () => Navigator.push(
                     context,
                     CupertinoPageRoute(

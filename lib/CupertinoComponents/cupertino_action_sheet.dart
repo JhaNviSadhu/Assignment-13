@@ -1,11 +1,14 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class ActionSheetDemo extends StatelessWidget {
-  const ActionSheetDemo({Key? key}) : super(key: key);
+  final String title;
+  const ActionSheetDemo({Key? key, required this.title}) : super(key: key);
 
   void myActionsheet(context) {
     showCupertinoModalPopup(
       context: context,
+      barrierDismissible: false,
       builder: (context) {
         return CupertinoActionSheet(
           title: const Text("This is CupertinoActionSheet "),
@@ -17,20 +20,32 @@ class ActionSheetDemo extends StatelessWidget {
           ),
           actions: [
             CupertinoActionSheetAction(
-              isDefaultAction: true,
               onPressed: () {
-                print("Yes");
-                Navigator.of(context).pop();
+                print("Dowload");
+
+                showCupertinoDialog(
+                  context: context,
+                  builder: (context) => const CupertinoActivityIndicator(
+                    radius: 20,
+                  ),
+                );
+                Future.delayed(
+                    const Duration(
+                      seconds: 2,
+                    ), () {
+                  Navigator.pop(context);
+                  print("Process Completed");
+                });
               },
-              child: const Text("Yes"),
+              child: const Text("Dowload"),
             ),
             CupertinoActionSheetAction(
               isDestructiveAction: true,
               onPressed: () {
-                print("No");
+                print("Delete");
                 Navigator.of(context).pop();
               },
-              child: const Text("No"),
+              child: const Text("Delete"),
             ),
           ],
         );
@@ -41,15 +56,15 @@ class ActionSheetDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar: const CupertinoNavigationBar(),
-      child: Center(
-        child: GestureDetector(
+      navigationBar: CupertinoNavigationBar(
+        middle: Text(title),
+        backgroundColor: CupertinoColors.white,
+      ),
+      child: GestureDetector(
           onTap: () {
             myActionsheet(context);
           },
-          child: Image.asset("assets/burger.jpg"),
-        ),
-      ),
+          child: Image.asset("assets/burger.jpg")),
     );
   }
 }

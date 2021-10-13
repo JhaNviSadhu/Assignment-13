@@ -33,6 +33,7 @@ samples, guidance on mobile development, and a full API reference.
 <img width="433" alt="contextmenu" src="https://user-images.githubusercontent.com/63531297/137143016-76be0793-3e0c-4577-8176-b4af2925bd05.png">
 
 - Cupertino TabBar
+   - Which contain Cupertino Switch, Cupertino Searchbar,Segment controller,Slider.
 
 <img width="451" alt="tabbar" src="https://user-images.githubusercontent.com/63531297/137143202-4081a5ac-6299-4466-be28-71841de1c800.png"><img width="428" alt="tab" src="https://user-images.githubusercontent.com/63531297/137143225-907a2bc4-e852-40ec-ae19-ee992c769689.png">
 
